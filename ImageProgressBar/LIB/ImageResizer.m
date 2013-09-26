@@ -80,9 +80,4 @@
     }
 }
 
--(void) dealloc{
-    [originalImage release];
-    [super dealloc];
-}
-
 @end

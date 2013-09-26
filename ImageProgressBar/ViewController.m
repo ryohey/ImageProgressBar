@@ -24,22 +24,22 @@
 {
     [super viewDidLoad];
 	
-    AndroidProgressBar *android = [[[AndroidProgressBar alloc] init] autorelease];
+    AndroidProgressBar *android = AndroidProgressBar.new;
     [android setProgress:0];
     android.frame = CGRectMake(20, android.frame.origin.y, android.frame.size.width, android.frame.size.height);
     [self.view addSubview:android];
     
-    LinearProgressBar *linear = [[[LinearProgressBar alloc] init] autorelease];
+    LinearProgressBar *linear = LinearProgressBar.new;
     [linear setProgress:0];
     linear.frame = CGRectMake(20, android.frame.origin.y+android.frame.size.height+PADDING_BOTTOM_PROGRESS, linear.frame.size.width, linear.frame.size.height);
     [self.view addSubview:linear];
     
-    SmallToHighProgressBar *smallToHigh = [[[SmallToHighProgressBar alloc] init] autorelease];
+    SmallToHighProgressBar *smallToHigh = SmallToHighProgressBar.new;
     [smallToHigh setProgress:0];
     smallToHigh.frame = CGRectMake(20, linear.frame.origin.y+linear.frame.size.height+PADDING_BOTTOM_PROGRESS, smallToHigh.frame.size.width, smallToHigh.frame.size.height);
     [self.view addSubview:smallToHigh];
     
-    AndroidLTRProgress *androidLTR = [[[AndroidLTRProgress alloc] init] autorelease];
+    AndroidLTRProgress *androidLTR = AndroidLTRProgress.new;
     [androidLTR setProgress:0];
     androidLTR.frame = CGRectMake(20, smallToHigh.frame.origin.y+smallToHigh.frame.size.height+PADDING_BOTTOM_PROGRESS, androidLTR.frame.size.width, androidLTR.frame.size.height);
     [self.view addSubview:androidLTR];
@@ -50,7 +50,7 @@
     self.smallToHighProgress = smallToHigh;
     self.androidLTRProgress = androidLTR;
     
-    loadingButton = [[UIButton buttonWithType:UIButtonTypeRoundedRect] retain];
+    loadingButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [loadingButton setTitle:@"Start Loading..." forState:UIControlStateNormal];
     [loadingButton addTarget:self action:@selector(loadingButtonTouch) forControlEvents:UIControlEventTouchUpInside];
     loadingButton.frame = CGRectMake(100, 340, 150, 40);
@@ -77,17 +77,5 @@
     
     timer = [NSTimer scheduledTimerWithTimeInterval: 0.020 target:self selector:@selector(avanceAllLoadingBar:) userInfo:nil repeats: YES];
 }
-
--(void) dealloc{
-    [androidProgress release];
-    [linearProgress release];
-    [smallToHighProgress release];
-    [androidLTRProgress release];
-    [loadingButton release];
-    [timer release];
-    [super dealloc];
-}
-
-
 
 @end

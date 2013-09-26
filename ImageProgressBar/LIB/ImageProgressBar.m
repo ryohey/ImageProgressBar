@@ -65,12 +65,4 @@
     [full setProgress:0];
 }
 
--(void) dealloc{
-    [empty release];
-    [feed release];
-    [full release];
-    [super dealloc];
-}
-
-
 @end
